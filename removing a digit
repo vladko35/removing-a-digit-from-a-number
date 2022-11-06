@@ -1,0 +1,30 @@
+//Въвеждане на число и премахване на цифра на избрана от потребителя позиция
+#include <iostream>
+using namespace std;
+int main()
+{
+	int number = 0, reverse = 0, k = 0, count = 1;
+	cout << "Enter a number: ";
+	cin >> number;
+	cout << "Enter k: ";
+	cin >> k;
+	while (number) //записва се огледалното число на въведеното
+	{
+		reverse = reverse * 10 + number % 10;
+		number /= 10;
+	}
+	number = 0;
+	while (reverse) //връща се огледалното число към първото му състояние, като се следи и за цифрата, която трябва да се
+	{				//премахне на избраната позиция
+		if (count == k) //ако цикълът е стигнал до избраната позиция, цифрата се премахва
+			reverse /= 10;
+		else //иначе продължаваме с връщането на числото към първото му състояние
+		{
+			number = number * 10 + reverse % 10;
+			reverse /= 10;
+		}
+		count++; //брояч за достигане на избраната позиция
+	}
+	cout << number << endl;
+	return 0;
+}
